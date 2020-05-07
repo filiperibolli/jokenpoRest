@@ -1,0 +1,153 @@
+{
+	"info": {
+		"_postman_id": "be988a22-b477-44c7-b52b-85c4e92dba22",
+		"name": "jokenpo-filipeRibolli",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "health",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{host}}/api/v1/health",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"api",
+						"v1",
+						"health"
+					]
+				},
+				"description": "Teste de servidor padrão e estabilidade do microservice"
+			},
+			"response": []
+		},
+		{
+			"name": "playJokenpo",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{  \n  \"jokenpoActs\" : [\n     {\n\t\t\"playerId\" : \"Jogador1\",\n\t\t\"move\" : \"Rock\"\n     },\n     {\n\t\t\"playerId\" : \"Jogador2\",\n\t\t\"move\" : \"SCISSORS\"\n     },\n     {\n\t\t\"playerId\" : \"Jogador3\",\n\t\t\"move\" : \"SCISSORS\"\n     }\n   ] \n}"
+				},
+				"url": {
+					"raw": "{{host}}/api/v1/playJokenpo",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"api",
+						"v1",
+						"playJokenpo"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "create",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\"player\" : \"Jogador1\"\n}"
+				},
+				"url": {
+					"raw": "{{host}}/api/v1/create",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"api",
+						"v1",
+						"create"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "find by id",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "{{host}}/api/v1//findPlayer/jogador1",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"api",
+						"v1",
+						"",
+						"findPlayer",
+						"jogador1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "delete by id",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "{{host}}/api/v1//deletePlayer/jogador1",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"api",
+						"v1",
+						"",
+						"deletePlayer",
+						"jogador1"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}
