@@ -39,13 +39,16 @@ public class JokenpoController {
 	@PostMapping(value = "/playJokenpo", consumes = MediaType.APPLICATION_JSON_VALUE, 
 			produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<String> playJokenpo(@RequestBody @Validated JokenpoInputDto newJokenpoInputDto) {
+		try {
+			Optional<JokenpoAct> jokenpoOutputDto = JokenpoCalculator.calculateJokenpoWinner(newJokenpoInputDto);
 
-		Optional<JokenpoAct> jokenpoOutputDto = JokenpoCalculator.calculateJokenpoWinner(newJokenpoInputDto);
-
-		if(jokenpoOutputDto.isEmpty()) {
-			return ResponseEntity.ok().body(" Empate.");
-		}else {
-			return ResponseEntity.ok().body(jokenpoOutputDto.get().getPlayerId() + " Vitoria.");
+			if(jokenpoOutputDto.isEmpty()) {
+				return ResponseEntity.ok().body(" Empate.");
+			}else {
+				return ResponseEntity.ok().body(jokenpoOutputDto.get().getPlayerId() + " Vitoria.");
+			}
+		}catch(Exception e){
+			return ResponseEntity.badRequest().body(" Estamos passando por problemas.");
 		}
         
 	}
