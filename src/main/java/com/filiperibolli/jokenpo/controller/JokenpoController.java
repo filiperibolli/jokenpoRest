@@ -2,11 +2,10 @@ package com.filiperibolli.jokenpo.controller;
 
 import java.util.Optional;
 
-import javax.validation.Valid;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -39,7 +38,7 @@ public class JokenpoController {
 	
 	@PostMapping(value = "/playJokenpo", consumes = MediaType.APPLICATION_JSON_VALUE, 
 			produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<String> playJokenpo(@RequestBody @Valid JokenpoInputDto newJokenpoInputDto) {
+    public ResponseEntity<String> playJokenpo(@RequestBody @Validated JokenpoInputDto newJokenpoInputDto) {
 
 		Optional<JokenpoAct> jokenpoOutputDto = JokenpoCalculator.calculateJokenpoWinner(newJokenpoInputDto);
 
